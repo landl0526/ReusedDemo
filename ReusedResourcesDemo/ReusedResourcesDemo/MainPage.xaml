@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ReusedResourcesDemo"
+             x:Class="ReusedResourcesDemo.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="SwipeTemplate">
+                <ViewCell>
+                    <Label Text="{Binding Name}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.OnDeleteClick, Source={x:Reference MyListView}}" CommandParameter="{Binding}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <ListView x:Name="MyListView" ItemTemplate="{StaticResource SwipeTemplate}">
+
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
