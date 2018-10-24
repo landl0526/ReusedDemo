@@ -10,35 +10,29 @@ using Xamarin.Forms.Xaml;
 namespace ReusedResourcesDemo
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ChildPage : MainPage
+	public partial class TemplatePage : ContentPage
 	{
-		public ChildPage ()
+		public TemplatePage ()
 		{
 			InitializeComponent ();
 
-            List<Model> list = new List<Model>();
+            List<TemplatePageModel> list = new List<TemplatePageModel>();
             for (int i = 0; i < 100; i++)
             {
-                list.Add(new Model { Name = "Name" + i });
+                list.Add(new TemplatePageModel { Name = "Name" + i });
             }
             MyListView.ItemsSource = list;
-
-            BindingContext = new PageModel();
         }
-    }
+	}
 
-    public class Model
+    public class TemplatePageModel
     {
         public string Name { set; get; }
-    }
-
-    public class PageModel
-    {
         public ICommand OnDeleteClick { set; get; }
 
-        public PageModel()
+        public TemplatePageModel()
         {
-            OnDeleteClick = new Command<Model>((model) =>
+            OnDeleteClick = new Command<TemplatePageModel>((model) =>
             {
                 Console.WriteLine(model.Name);
             });

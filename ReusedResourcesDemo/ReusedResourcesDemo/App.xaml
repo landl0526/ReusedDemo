@@ -3,6 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ReusedResourcesDemo.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <DataTemplate x:Key="SwipeTemplate">
+                <ViewCell>
+                    <Label Text="{Binding Name}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnDeleteClick}" CommandParameter="{Binding}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -11,7 +11,7 @@ namespace ReusedResourcesDemo
         {
             InitializeComponent();
 
-            MainPage = new ChildPage();
+            MainPage = new TemplatePage();
         }
 
         protected override void OnStart()
